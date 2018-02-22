@@ -1,0 +1,24 @@
+header {
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    background-color: steelblue;
+    padding-left: 10px;
+}
+
+header li {
+    list-style: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding-right: 15px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover {
+    color: white;
+    text-decoration: underline;
+}
