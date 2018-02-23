@@ -35,12 +35,30 @@ class App extends Component {
     super(props);
     this.state = {
       cards: shuffle(cards),
-      onClick: false
+      noClick: false
     };
+    this.handleClick = this.handleClick.bind(this);
   }
+  handleClick(id) {
+    this.setState(prevState => {
+      let cards = prevState.cards.map(card => (
+        card.id === id ? {
+          ...card,
+          cardState: card.cardState === CardState.HIDING ? CardState.MATCHING : CardState.HIDING
+        } : card
+      ));
+      return { cards };
+    });
+  }
+
   render() {
     const cards = this.state.cards.map((card) => (
-      <Card key={card.id} />
+      <Card 
+        key={card.id} 
+        showing={card.cardState !== CardState.HIDING} 
+        backgroundColor={card.backgroundColor}
+        onClick={() => this.handleClick(card.id)} 
+      />
     ));
     return (
       <div className="App">

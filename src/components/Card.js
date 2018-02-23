@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
 import './Card.css';
 
@@ -8,7 +8,7 @@ const Card = (props) => {
         style.backgroundColor = props.backgroundColor;
     }
     return (
-        <div onClick={props.on} className="card" style={style}>Card</div>
+        <div onClick={props.onClick} className="card" style={style} />
     );
 };
 
