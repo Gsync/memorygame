@@ -38,6 +38,15 @@ class App extends Component {
       noClick: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleNewGame = this.handleNewGame.bind(this);
+  }
+  handleNewGame() {
+    let cards = this.state.cards.map(card => ({
+      ...card,
+      cardState: CardState.HIDING
+    }));
+    cards = shuffle(cards);
+    this.setState({cards});
   }
   handleClick(id) {
     this.setState(prevState => {
@@ -62,7 +71,7 @@ class App extends Component {
     ));
     return (
       <div className="App">
-        <Navbar />
+        <Navbar onClickNewGame={this.handleNewGame} />
         {cards}
       </div>
     );
